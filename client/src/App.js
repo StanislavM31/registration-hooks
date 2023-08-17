@@ -1,9 +1,9 @@
-import './App.css';
+import RegisterPage from "./pages/RegistratePage/RegisterPage";
 
 function App() {
   return (
-    <div>
-
+    <div className="App">
+      <RegisterPage />
     </div>
   );
 }
