@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { TextField } from "@mui/material";
 import {Button} from "@mui/material";
+import axios from "axios"
 
 function AuthPage(){
     const [form, setForm] = useState({email:"", pwd:""});
@@ -11,7 +12,7 @@ function AuthPage(){
         setForm({...form, [event.target.name]: event.target.value})
     }
     async function show(){
-        console.log("filled form", form);
+/*         console.log("filled form", form);
         const result = await fetch("http://localhost:3001/api/authorize", {
             method: "POST",
             headers: {
@@ -19,9 +20,10 @@ function AuthPage(){
             },
             body: JSON.stringify(form)
         });
-
         const json = await result.json();
-        console.log(json);
+        console.log(json); */
+        const result = await axios.post('http://localhost:3001/api/authorize', form);
+        console.log(result.data)
     }
     return(
         <>
