@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import axios from "axios"
 
 function RegisterPage() {
   const[form, setForm] = useState({email:"", pwd:"", username:""});
@@ -11,17 +12,20 @@ function RegisterPage() {
     setForm({...form, [event.target.name]: event.target.value})
   }
   async function show(){
-    console.log("filled form: ",form);
-    const result = await fetch("http://localhost:3001/api/register",{
-      method: "POST",
+/*     console.log('filled form: ',form);
+    const result = await fetch('http://localhost:3001/api/register',{
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(form)
     } )
 
     const json = await result.json();
-    console.log(json);
+    console.log(json); */
+    const result = await axios.post('http://localhost:3001/api/register', form);
+    console.log(result.data);
+
   }
   return (
     <>
